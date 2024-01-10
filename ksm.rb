@@ -5,29 +5,39 @@
 class Ksm < Formula
   desc ""
   homepage "https://github.com/ck0ne01/kubernetes-secrets-manager"
-  version "0.1.0"
+  version "0.1.1"
 
   on_macos do
-    url "https://github.com/ck0ne01/kubernetes-secrets-manager/releases/download/0.1.0/kubernetes-secrets-manager_0.1.0_darwin_all.tar.gz"
-    sha256 "df51df7f9637e253898abc13fb9b83b2b9f5207e6b288e6950ccf2a021b62bb2"
-
-    def install
-      bin.install "kubernetes-secrets-manager"
-    end
-  end
-
-  on_linux do
-    if Hardware::CPU.intel?
-      url "https://github.com/ck0ne01/kubernetes-secrets-manager/releases/download/0.1.0/kubernetes-secrets-manager_0.1.0_linux_amd64.tar.gz"
-      sha256 "30a793ab2556c9254094a554b9fc0a23d888a55e12a5b9b6b395958cb277972d"
+    if Hardware::CPU.arm?
+      url "https://github.com/ck0ne01/kubernetes-secrets-manager/releases/download/0.1.1/kubernetes-secrets-manager_0.1.1_darwin_arm64.tar.gz"
+      sha256 "15b374def1ca555f834954d671f5e26696a6b1d86e0df32be39745c4ca6fcb1e"
 
       def install
         bin.install "ksm"
       end
     end
+    if Hardware::CPU.intel?
+      url "https://github.com/ck0ne01/kubernetes-secrets-manager/releases/download/0.1.1/kubernetes-secrets-manager_0.1.1_darwin_amd64.tar.gz"
+      sha256 "7231692075454890b34cf9641d692405fc5f4295d0b7995869e77628a3d835cb"
+
+      def install
+        bin.install "ksm"
+      end
+    end
+  end
+
+  on_linux do
     if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/ck0ne01/kubernetes-secrets-manager/releases/download/0.1.0/kubernetes-secrets-manager_0.1.0_linux_arm64.tar.gz"
-      sha256 "f7437a2fa3f4f9313fb458bc251b2540bfce2b059915e88ab1f6dbb890a234ef"
+      url "https://github.com/ck0ne01/kubernetes-secrets-manager/releases/download/0.1.1/kubernetes-secrets-manager_0.1.1_linux_arm64.tar.gz"
+      sha256 "498c62497532b9781e79cf7abef78d2a8f60e051c67a242fcbc31f3a5dd2a277"
+
+      def install
+        bin.install "ksm"
+      end
+    end
+    if Hardware::CPU.intel?
+      url "https://github.com/ck0ne01/kubernetes-secrets-manager/releases/download/0.1.1/kubernetes-secrets-manager_0.1.1_linux_amd64.tar.gz"
+      sha256 "5ef6e6aad0091f6f7a1964acbfbbb493983c0cf15b2d265dec0aae53ceb0e80c"
 
       def install
         bin.install "ksm"
