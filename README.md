@@ -1,2 +1,2 @@
-# homebrew-ck0ne01
+# homebrew
 Repo for Homebrew Tap
